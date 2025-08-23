@@ -1,9 +1,9 @@
 {
-  "Print to console": {
-    "prefix": "log",
+  "Simple Print": {
+    "prefix": "pysimple",
     "body": [
-      "print($1)"
+      "print('Hello, Snippet!')"
     ],
-    "description": "Log output to console"
+    "description": "A simple print statement for testing."
   }
 }
