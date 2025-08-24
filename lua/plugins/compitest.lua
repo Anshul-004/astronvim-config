@@ -20,20 +20,26 @@ return {
 
       -- output/input handling
       testcases_directory = "./testcases",
-      testcases_input_file_format = "input$(TCNUM).txt",
-      testcases_output_file_format = "output$(TCNUM).txt",
+      testcases_use_single_file = false,
+      testcases_auto_detect_storage = true,
+      testcases_single_file_format = "$(FNOEXT).testcases",
+      testcases_input_file_format = "$(FNOEXT)_input$(TCNUM).txt",
+      testcases_output_file_format = "$(FNOEXT)_output$(TCNUM).txt",
+
       evaluate_template_modifiers = true,
       
       --Problems Path
       received_problems_path = "$(HOME)/Code-Playground/CP/$(JUDGE)/$(JAVA_TASK_CLASS).$(FEXT)",
       received_contests_directory = "$(HOME)/Code-Playground/CP/$(JUDGE)/$(CONTEST)", 
       received_contests_problems_path = "$(JAVA_TASK_CLASS).$(FEXT)",
-
+      testcases_use_contests_directory = true,
+      testcases_auto_detect = true,
       -- UI
       floating_border = "rounded",
       floating_border_highlight = "FloatBorder",
       floating_win_options = { winblend = 10 },
     }
+    -- Shortcuts
     vim.api.nvim_create_user_command("CR", function()
       vim.cmd("CompetiTest run")
     end, {})
@@ -45,7 +51,14 @@ return {
     vim.api.nvim_create_user_command("CC", function()
       vim.cmd("CompetiTest receive contest")
     end, {})
+    
+    vim.api.nvim_create_user_command("CU", function()
+      vim.cmd("CompetiTest show_ui")
+    end, {})
 
+    vim.api.nvim_create_user_command("CU", function()
+      vim.cmd("CompetiTest add_testcase")
+    end, {})
  end,
 }
 
